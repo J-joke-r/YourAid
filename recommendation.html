@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Recommendation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Medical Recommendation</h1>
+
+        <!-- Display Recommendation -->
+        <div id="recommendation"></div>
+
+        <!-- Feedback Section -->
+        <h2>Feedback</h2>
+        <div id="feedback">
+            <button class="emoji-button" data-feedback="positive">😊</button>
+            <button class="emoji-button" data-feedback="neutral">😐</button>
+            <button class="emoji-button" data-feedback="negative">😞</button>
+        </div>
+        <div id="feedback-message"></div>
+
+        <!-- Go Back Button -->
+        <a href="index.html" class="back-button">Go Back</a>
+    </div>
+
+    <script>
+        // Fetch recommendation data from localStorage
+        const recommendationData = JSON.parse(localStorage.getItem('recommendationData'));
+
+        // Display recommendation
+        const recommendationDiv = document.getElementById("recommendation");
+        if (recommendationData) {
+            recommendationDiv.innerHTML = `
+                <p><strong>Username:</strong> ${recommendationData.username}</p>
+                <p><strong>Drug Name:</strong> ${recommendationData.DrugName}</p>
+                <p><strong>Dosage:</strong> ${recommendationData.Dosage}</p>
+                <p><strong>Lifestyle Advice:</strong> ${recommendationData.LifestyleAdvice}</p>
+            `;
+        } else {
+            recommendationDiv.innerHTML = "<p>No recommendation data found. Please go back and try again.</p>";
+        }
+
+        // Handle feedback
+        const feedbackMessage = document.getElementById("feedback-message");
+        document.querySelectorAll(".emoji-button").forEach(button => {
+            button.addEventListener("click", () => {
+                const feedback = button.getAttribute("data-feedback");
+                if (feedback === "positive") {
+                    feedbackMessage.textContent = "Thank you for your positive feedback! 😊";
+                } else if (feedback === "neutral") {
+                    feedbackMessage.textContent = "Thank you for your neutral feedback! 😐";
+                } else if (feedback === "negative") {
+                    feedbackMessage.textContent = "Sorry to hear that. We will try to improve! 😞";
+                }
+
+                // Optionally, store feedback in localStorage for later submission
+                localStorage.setItem('feedback', feedback);
+            });
+        });
+    </script>
+</body>
+</html>

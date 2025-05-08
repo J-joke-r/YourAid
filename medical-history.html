@@ -1,0 +1,78 @@
+<!-- medical-history.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical History</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Medical History</h1>
+        <form id="medicalHistoryForm">
+            <div class="form-group">
+                <label for="medicalHistory">Medical History:</label>
+                <select id="medicalHistory" name="medicalHistory" required>
+                    <option value="">Select Medical History</option>
+                    <option value="kidney disease">Kidney Disease</option>
+                    <option value="heart disease">Heart Disease</option>
+                    <option value="hypertension">Hypertension</option>
+                    <option value="asthma">Asthma</option>
+                    <option value="diabetes">Diabetes</option>
+                    <option value="none">None</option>
+                </select>
+            </div>
+            <button type="submit">Get Recommendation</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById("medicalHistoryForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        // Retrieve the form data from localStorage
+        const formData = JSON.parse(localStorage.getItem('formData'));
+
+        // Debugging - Check if form data is retrieved correctly
+        console.log("Form Data from localStorage:", formData);
+
+        if (!formData) {
+            alert("No form data found.");
+            return;
+        }
+
+        // Get the medical history input from the form
+        const medicalHistory = document.getElementById("medicalHistory").value;
+
+        // Combine the form data with the medical history
+        const data = {
+            ...formData,           // Spread the existing form data (username, symptom1, symptom2)
+            medicalhistory: medicalHistory // Add the medical history data
+        };
+
+        // Debugging - Check the final data being sent
+        console.log("Final Data to be sent:", data);
+
+        // Send the combined data to the backend
+        fetch("http://127.0.0.1:5000/get_recommendation", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(responseData => {
+            // Save the recommendation data in localStorage
+            localStorage.setItem('recommendationData', JSON.stringify(responseData));
+
+            // Redirect to the recommendation page
+            window.location.href = "recommendation.html";
+        })
+        .catch(error => {
+            console.error("Fetch Error:", error);
+            alert("Error getting recommendation. Please try again.");
+        });
+    });
+
+    </script>
+</body>
+</html>

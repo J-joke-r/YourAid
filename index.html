@@ -1,0 +1,77 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Recommendation System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Medical Recommendation System</h1>
+        <form id="recommendationForm">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="symptom1">Symptom 1:</label>
+                <select id="symptom1" name="symptom1" required>
+                    <option value="">Select Symptom 1</option>
+                    <option value="cough">Cough</option>
+                    <option value="allergy">Allergy</option>
+                    <option value="body pain">Body Pain</option>
+                    <option value="cold">Cold</option>
+                    <option value="acid reflux">Acid Reflux</option>
+                    <option value="stomach ache">Stomach Ache</option>
+                    <option value="nausea">Nausea</option>
+                    <option value="fever">Fever</option>
+                    <option value="headache">Headache</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="symptom2">Symptom 2:</label>
+                <select id="symptom2" name="symptom2">
+                    <option value="N/A">N/A</option>
+                    <option value="cough">Cough</option>
+                    <option value="allergy">Allergy</option>
+                    <option value="body pain">Body Pain</option>
+                    <option value="cold">Cold</option>
+                    <option value="acid reflux">Acid Reflux</option>
+                    <option value="stomach ache">Stomach Ache</option>
+                    <option value="nausea">Nausea</option>
+                    <option value="fever">Fever</option>
+                    <option value="headache">Headache</option>
+                </select>
+            </div>
+            <button type="submit">Next: Medical History</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById("recommendationForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const username = document.getElementById("username").value.trim();
+        const symptom1 = document.getElementById("symptom1").value;
+        const symptom2 = document.getElementById("symptom2").value;
+
+        const data = {
+            username: username,
+            symptom1: symptom1,
+            symptom2: symptom2
+        };
+
+        // Debugging - Check data before storing
+        console.log("Form Data:", data);
+
+        // Store the form data in localStorage
+        localStorage.setItem('formData', JSON.stringify(data));
+
+        // Redirect to the medical history page
+        window.location.href = "medical-history.html";
+    });
+
+    </script>
+</body>
+</html>

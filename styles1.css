@@ -1,0 +1,101 @@
+/* styles.css */
+body {
+  font-family: sans-serif;
+  background: linear-gradient(to bottom right, #007BFF, #ffffff); /* Blue and White Gradient */
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #000000; /* Black text for contrast */
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.9); /* White background with slight opacity */
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  backdrop-filter: blur(5px); /* Add a blur effect */
+  text-align: center; /* Center the content */
+}
+
+h1 {
+  color: #000000; /* Black text */
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left; /* Align labels to the left */
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #000000; /* Black text */
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(240, 240, 240, 0.8); /* Light gray background for inputs */
+  color: #000000; /* Black text */
+}
+
+button {
+  background: linear-gradient(to right, #007BFF, #0056b3); /* Blue button */
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease; /* Smooth transition on hover */
+}
+
+button:hover {
+  background: linear-gradient(to right, #0056b3, #003f8f); /* Darker blue on hover */
+}
+
+.output {
+  margin-top: 30px;
+}
+
+#response {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 5px;
+  color: #000000; /* Black text */
+}
+
+#feedback {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.emoji-button {
+  font-size: 2em; /* Make emojis bigger */
+  padding: 10px 20px;
+  margin: 0 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+#feedback-message {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #000000; /* Black text */
+}
+
+.back-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4CAF50; /* Green */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
