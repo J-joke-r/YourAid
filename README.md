@@ -19,7 +19,7 @@ YourAid is a project designed to help users find and share random jokes.
 To install the project locally:
 1. Clone the repository:
    ```bash
-   git clone https://github.com/J-joke-r/YourAid.git
+   git clone https://github.com/imanishraj/YourAid.git
    ```
 2. Navigate to the project directory:
    ```bash
